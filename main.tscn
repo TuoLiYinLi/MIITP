@@ -1,0 +1,209 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://TCP_server.gd" type="Script" id=1]
+[ext_resource path="res://scope.png" type="Texture" id=2]
+[ext_resource path="res://scope.gd" type="Script" id=3]
+[ext_resource path="res://new_theme.tres" type="Theme" id=4]
+[ext_resource path="res://main_page.png" type="Texture" id=5]
+[ext_resource path="res://上一首.png" type="Texture" id=6]
+[ext_resource path="res://下一首.png" type="Texture" id=7]
+[ext_resource path="res://歌曲背景1.png" type="Texture" id=8]
+[ext_resource path="res://歌曲背景2.png" type="Texture" id=9]
+[ext_resource path="res://开始.png" type="Texture" id=10]
+[ext_resource path="res://start_pause.gd" type="Script" id=11]
+[ext_resource path="res://main.gd" type="Script" id=12]
+[ext_resource path="res://暂停.png" type="Texture" id=13]
+[ext_resource path="res://next.gd" type="Script" id=14]
+[ext_resource path="res://prev.gd" type="Script" id=15]
+[ext_resource path="res://bg.gd" type="Script" id=16]
+[ext_resource path="res://misc.png" type="Texture" id=17]
+[ext_resource path="res://MainPage.gd" type="Script" id=18]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 23.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 23.0
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 33.4344
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 415.15, 917.361 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 20.0
+
+[node name="main" type="Node2D"]
+script = ExtResource( 12 )
+
+[node name="scene" type="Node2D" parent="."]
+
+[node name="bg" type="Node2D" parent="scene"]
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="bg2" type="Sprite" parent="scene/bg"]
+position = Vector2( 0, 8 )
+scale = Vector2( 0.87, 0.843 )
+texture = ExtResource( 9 )
+
+[node name="bg1" type="Sprite" parent="scene/bg"]
+position = Vector2( 0, 8 )
+scale = Vector2( 0.87, 0.843 )
+texture = ExtResource( 8 )
+
+[node name="prev" type="Sprite" parent="scene"]
+position = Vector2( 3.96669e-05, 8.00007 )
+scale = Vector2( 0.869565, 0.842634 )
+texture = ExtResource( 6 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Area2D" type="Area2D" parent="scene/prev"]
+position = Vector2( 142.6, 726.294 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene/prev/Area2D"]
+position = Vector2( -297.85, -2.37354 )
+shape = SubResource( 4 )
+
+[node name="next" type="Sprite" parent="scene"]
+position = Vector2( 3.96669e-05, 8.00007 )
+scale = Vector2( 0.869565, 0.842634 )
+texture = ExtResource( 7 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Area2D" type="Area2D" parent="scene/next"]
+position = Vector2( 142.6, 726.294 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene/next/Area2D"]
+position = Vector2( 11.5, -2.37347 )
+shape = SubResource( 3 )
+
+[node name="start_pause" type="Sprite" parent="scene"]
+position = Vector2( 3.96669e-05, 8.00007 )
+scale = Vector2( 0.869565, 0.842634 )
+texture = ExtResource( 10 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+texture_start = ExtResource( 10 )
+texture_pause = ExtResource( 13 )
+
+[node name="Area2D" type="Area2D" parent="scene/start_pause"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene/start_pause/Area2D"]
+position = Vector2( -4.56572e-05, 726.294 )
+shape = SubResource( 1 )
+
+[node name="misc" type="Sprite" parent="scene"]
+scale = Vector2( 0.87, 0.843 )
+texture = ExtResource( 17 )
+
+[node name="MainPage" type="Sprite" parent="scene"]
+position = Vector2( 3.63798e-12, 1476 )
+scale = Vector2( 0.869565, 0.842634 )
+texture = ExtResource( 5 )
+script = ExtResource( 18 )
+
+[node name="Area2D" type="Area2D" parent="scene/MainPage"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene/MainPage/Area2D"]
+position = Vector2( -9.69918e-06, -20.1752 )
+shape = SubResource( 5 )
+
+[node name="scope" type="Node2D" parent="scene"]
+position = Vector2( 244, 246 )
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="scene/scope"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Area2D" type="Area2D" parent="scene/scope"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene/scope/Area2D"]
+shape = SubResource( 2 )
+
+[node name="debug" type="Node2D" parent="."]
+position = Vector2( 0, -189 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Panel" type="Panel" parent="debug"]
+modulate = Color( 1, 1, 1, 0.737255 )
+margin_left = -319.0
+margin_top = 333.0
+margin_right = -21.0
+margin_bottom = 524.0
+
+[node name="Label" type="Label" parent="debug"]
+margin_left = -306.0
+margin_top = 345.0
+margin_right = -34.0
+margin_bottom = 378.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 4 )
+text = "Hello Android 0.1"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="debug"]
+margin_left = -306.0
+margin_top = 378.0
+margin_right = -110.0
+margin_bottom = 411.0
+theme = ExtResource( 4 )
+text = "123"
+
+[node name="Label3" type="Label" parent="debug"]
+margin_left = -306.0
+margin_top = 411.0
+margin_right = -110.0
+margin_bottom = 444.0
+theme = ExtResource( 4 )
+text = "posis"
+valign = 1
+
+[node name="Label4" type="Label" parent="debug"]
+margin_left = -306.0
+margin_top = 444.0
+margin_right = -110.0
+margin_bottom = 477.0
+theme = ExtResource( 4 )
+text = "posis"
+valign = 1
+
+[node name="Label5" type="Label" parent="debug"]
+margin_left = -306.0
+margin_top = 477.0
+margin_right = -110.0
+margin_bottom = 510.0
+theme = ExtResource( 4 )
+text = "target"
+valign = 1
+
+[node name="TCP_server" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+__meta__ = {
+"_edit_lock_": true
+}
